@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ru.tarelka.app",
+      "sha256_cert_fingerprints": [
+        "0C:6C:F7:54:3B:0F:90:D7:8F:AA:7B:95:3B:99:41:80:BA:B6:0E:29:2B:CF:52:DF:43:F3:FB:51:8B:E4:93:E4"
+      ]
+    }
+  }
+]

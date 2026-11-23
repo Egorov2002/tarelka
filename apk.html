@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тарелка — приложение для Android</title>
+<style>
+  :root { --ink:#14161c; --ink2:#5b6270; --line:#e4e6eb; --acc:#4f46e5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: #f2f3f6; color: var(--ink); -webkit-text-size-adjust:100%; }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 28px 18px 60px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px 20px;
+          box-shadow: 0 8px 28px rgba(20,22,28,.07); }
+  .logo { width:60px; height:60px; border-radius:16px; background:linear-gradient(150deg,#6d5cf7,#4f46e5);
+          display:grid; place-items:center; color:#fff; font-size:30px; }
+  h1 { font-size:26px; letter-spacing:-.03em; margin:16px 0 6px; }
+  .lead { color: var(--ink2); font-size:15px; line-height:1.55; margin:0 0 20px; }
+  .btn { display:block; text-align:center; text-decoration:none; background:var(--acc); color:#fff;
+         padding:15px 18px; border-radius:14px; font-size:16px; font-weight:700; }
+  .btn.ghost { background:#fff; color:var(--ink); border:1px solid var(--line); margin-top:10px; font-weight:600; }
+  .meta { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 4px; }
+  .chip { background:#f2f3f6; border-radius:999px; padding:6px 11px; font-size:12.5px; color:var(--ink2); }
+  h2 { font-size:15px; margin:26px 0 10px; }
+  ol { padding-left:20px; margin:0; }
+  ol li { font-size:14.5px; line-height:1.6; margin-bottom:9px; }
+  .shots { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .shots img { width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+  .note { font-size:12.5px; color:var(--ink2); line-height:1.55; margin-top:22px; }
+  .price { font-size:13px; color:var(--ink2); margin-top:10px; }
+  code { background:#f2f3f6; padding:2px 6px; border-radius:6px; font-size:12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="logo">🍲</div>
+    <h1>Тарелка</h1>
+    <p class="lead">Рацион на неделю по ценам твоего магазина: меню, список покупок и рецепты.
+      Без подписки и доплат — сразу видно, во сколько обойдётся неделя.</p>
+
+    <a class="btn" href="Tarelka-1.0.0.apk" download>Скачать APK для Android</a>
+    <a class="btn ghost" href="privacy.html">Политика конфиденциальности</a>
+
+    <div class="meta">
+      <span class="chip">Версия 1.0.0</span>
+      <span class="chip">Android 7.0 и новее</span>
+      <span class="chip">1,2 МБ</span>
+      <span class="chip">Без рекламы</span>
+    </div>
+    <p class="price">Нужна связь с интернетом: приложение загружает цены и фотографии блюд с сервера.</p>
+  </div>
+
+  <h2>Как установить</h2>
+  <div class="card">
+    <ol>
+      <li>Откройте эту страницу в Chrome на телефоне и нажмите «Скачать APK для Android».</li>
+      <li>Нажмите на скачанный файл <code>Tarelka-1.0.0.apk</code> в списке загрузок.</li>
+      <li>Если Android спросит — разрешите установку: <b>Настройки → Установка неизвестных приложений → Загрузки</b> (или «Браузер»/«Файлы») → включите.</li>
+      <li>Вернитесь и подтвердите установку. «Тарелка» появится в списке приложений.</li>
+    </ol>
+  </div>
+
+  <h2>Как это выглядит</h2>
+  <div class="shots">
+    <img src="screenshots/02-plan.png" alt="Рацион на неделю">
+    <img src="screenshots/04-dishes.png" alt="Блюда">
+    <img src="screenshots/03-shopping-list.png" alt="Список покупок">
+  </div>
+
+  <p class="note">Это тестовая сборка, подписанная демонстрационным ключом. Для публикации в Google Play
+    нужен собственный ключ подписи — он привязывает обновления к вашему аккаунту разработчика.</p>
+</div>
+</body>
+</html>
