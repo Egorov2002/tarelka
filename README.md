@@ -45,6 +45,21 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 Workflow сам скачивает фотографии блюд и APK, собирает статику и выкладывает её.
 После этого обновление цен из `data/prices-live.json` попадает на сайт автоматически.
 
+## Как добавить фотографии и APK в этот репозиторий
+
+Текстовые файлы (код, стили, каталог, цены) уже загружены. Бинарные — фотографии
+блюд и APK — нужно добавить обычным git, они не проходят через API:
+
+```bash
+git clone https://github.com/Egorov2002/tarelka.git
+cd tarelka
+cp -r ../racion/assets ./assets
+cp ../racion/Tarelka-1.0.0.apk .
+git add -A && git commit -m "фотографии блюд и APK" && git push
+```
+
+После этого workflow сам соберёт сайт и выложит его на Pages.
+
 ## Обновление цен
 
 ```bash
