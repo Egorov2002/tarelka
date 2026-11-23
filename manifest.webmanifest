@@ -1,0 +1,18 @@
+{
+  "name": "Тарелка — умный рацион на неделю",
+  "short_name": "Тарелка",
+  "description": "Рацион на неделю по ценам твоего магазина: меню, список покупок и рецепты. Без подписки и доплат.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f3f6",
+  "theme_color": "#4f46e5",
+  "lang": "ru",
+  "categories": ["food", "health", "lifestyle"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
