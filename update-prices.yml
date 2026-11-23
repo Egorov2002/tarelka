@@ -1,0 +1,59 @@
+name: Обновить цены магазинов
+
+# Сборщик ходит на сайты магазинов и обновляет data/prices-live.json.
+# Приложение тянет этот файл по сети и пересчитывает рацион.
+
+on:
+  schedule:
+    # каждый день в 03:17 UTC (по расписанию GitHub Actions cron не гарантирует точную минуту)
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      stores:
+        description: "Сети через запятую (пусто — все включённые)"
+        required: false
+        default: ""
+      pages:
+        description: "Страниц на категорию"
+        required: false
+        default: "6"
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Установить зависимости
+        run: pip install --quiet playwright && python -m playwright install --with-deps chromium
+
+      - name: Собрать цены
+        run: |
+          python tools/collector.py \
+            ${{ inputs.stores && format('--stores {0}', inputs.stores) || '--all' }} \
+            --pages ${{ inputs.pages || '6' }} \
+            --out data/prices-live.json
+
+      - name: Отчёт
+        run: |
+          python - <<'EOF'
+          import json, datetime
+          d = json.load(open('data/prices-live.json', encoding='utf-8'))
+          print("Обновлено:", datetime.datetime.fromtimestamp(d['ts']).isoformat())
+          for sid, s in d.get('stores', {}).items():
+              print(f"  {sid}: {len(s.get('items', {}))} товаров")
+          EOF
+
+      - name: Закоммитить
+        run: |
+          git config user.name "price-bot"
+          git config user.email "price-bot@users.noreply.github.com"
+          git add data/prices-live.json
+          git diff --staged --quiet || git commit -m "цены: автообновление $(date -u +%Y-%m-%dT%H:%M)"
+          git push || echo "push не удался — запусти вручную из этого репозитория"
